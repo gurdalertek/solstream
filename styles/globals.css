@@ -1,16 +1,14 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#2c3531] text-gray-300;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* SOLANA PURPLE #9945FF */
+/* SOLANA GREEN #14F195 */
 
-* {
-  box-sizing: border-box;
-}
+/* SOLANA BRANDING https://solana.com/branding */
