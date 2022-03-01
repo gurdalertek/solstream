@@ -15,10 +15,6 @@ export default function Home({ results }) {
     Moralis,
   } = useMoralis();
 
-  const authPhantom = async function authWalletConnect() {
-    const user = await Moralis.authenticate({ type: "sol" });
-  };
-
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
     // eslint-disable-next-line react-hooks/exhaustive-deps

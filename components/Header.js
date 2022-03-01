@@ -10,11 +10,16 @@ import {
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+const appId = "t6xbULcDW4PqrtojF4BUS4FT6j2p3WTsxkvZzleZ";
+const serverUrl = "https://s97wx7w8yvhm.usemoralis.com:2053/server";
+
 export default function Header() {
   const { Moralis } = useMoralis();
   const router = useRouter();
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  Moralis.start({ serverUrl, appId });
+
+  const [isAuthenticated, setIsAuthenticated] = useState();
 
   const authPhantom = async function authWalletConnect() {
     await Moralis.authenticate({ type: "sol" });
@@ -26,6 +31,12 @@ export default function Header() {
     setIsAuthenticated(false);
     console.log("still connected");
   };
+
+  useEffect(() => {
+    if (Moralis.User.current()) {
+      setIsAuthenticated(true);
+    }
+  }, [isAuthenticated]);
 
   function openHome() {
     router.push("/");
