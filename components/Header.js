@@ -11,16 +11,21 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Header() {
-  const { user, isAuthenticated } = useMoralis();
-  const [isUser, setIsUser] = useState();
-
+  const { Moralis } = useMoralis();
   const router = useRouter();
 
-  useEffect(() => {
-    if (user) {
-      // setIsUser(user.get("ethAddress"));
-    }
-  }, []);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const authPhantom = async function authWalletConnect() {
+    await Moralis.authenticate({ type: "sol" });
+    setIsAuthenticated(true);
+  };
+
+  const logoutPhantom = async function authWalletConnect() {
+    await Moralis.User.logOut();
+    setIsAuthenticated(false);
+    console.log("still connected");
+  };
 
   function openHome() {
     router.push("/");
@@ -61,12 +66,18 @@ export default function Header() {
         src="https://links.papareact.com/ua6"
       /> */}
       <h1 className="text-white whitespace-nowrap">S O L S T R E A M</h1>
-      {isUser ? (
-        <button className="border-2 border-[#14F195] p-2 rounded-xl whitespace-nowrap">
+      {isAuthenticated ? (
+        <button
+          onClick={logoutPhantom}
+          className="border-2 border-[#14F195] p-2 rounded-xl whitespace-nowrap"
+        >
           User
         </button>
       ) : (
-        <button className="border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap">
+        <button
+          onClick={authPhantom}
+          className="border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap"
+        >
           Connect User
         </button>
       )}

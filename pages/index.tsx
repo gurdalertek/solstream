@@ -7,8 +7,17 @@ import Results from "../components/Results";
 import requests from "../utils/requests";
 
 export default function Home({ results }) {
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
-    useMoralis();
+  const {
+    isWeb3Enabled,
+    enableWeb3,
+    isAuthenticated,
+    isWeb3EnableLoading,
+    Moralis,
+  } = useMoralis();
+
+  const authPhantom = async function authWalletConnect() {
+    const user = await Moralis.authenticate({ type: "sol" });
+  };
 
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
