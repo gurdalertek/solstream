@@ -2,7 +2,6 @@ import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { useMoralis, useMoralisFile } from "react-moralis";
-import { create } from "domain";
 
 export default function MintVideos() {
   const { Moralis } = useMoralis();
@@ -24,6 +23,7 @@ export default function MintVideos() {
         rmap[result.get("Category")] = result.id;
       });
       setCategories(r);
+      setSelectedId(rmap);
     });
   }, []);
 
@@ -67,12 +67,17 @@ export default function MintVideos() {
     const VideoContent = new Moralis.Object.extend("VideoContent");
     const videoContent = new VideoContent();
 
+    const ChannelCategory = Moralis.Object.extend("ChannelCategory");
+    const category = new ChannelCategory();
+    category.set("objectId", selectedId[selected]);
+
     console.log(selectedCategory);
+    console.log(category);
 
     videoContent.set("videoTitle", videoTitle);
     videoContent.set("videoDescription", videoDescription);
     videoContent.set("videoFile", ipfsVideo);
-    videoContent.set(selected, selectedCategory);
+    videoContent.set("category", category);
     videoContent.save().then((object) => {
       // contractCall(object);
       alert("saved");
