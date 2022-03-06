@@ -36,7 +36,7 @@ export default function MintVideos() {
 
   return (
     <div className=" flex flex-col items-center justify-center my-8">
-      <h1 className="mb-8">Upload Ads</h1>
+      <h1 className="mb-8">Upload Advertisement</h1>
       <form className="flex flex-col items-cennter justify-center space-y-8">
         <input
           id={"adTitle"}

@@ -41,8 +41,10 @@ export default function MintVideos() {
 
     if (videoFile) {
       console.log("uploading file");
-      await saveFile("videoContent", videoFile, { saveIPFS: true }).then(
+      console.log(videoFile);
+      await saveFile("video", videoFile, { saveIPFS: true }).then(
         async (hash) => {
+          console.log(hash);
           ipfsVideo = hash._ipfs;
         }
       );
@@ -51,6 +53,7 @@ export default function MintVideos() {
       console.log("uploading file");
       await saveFile("thumbnail", pictureFile, { saveIPFS: true }).then(
         async (hash) => {
+          console.log(hash);
           ipfsThumbnail = hash._ipfs;
         }
       );

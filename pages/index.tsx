@@ -29,23 +29,23 @@ export default function Home({ results }) {
       </Head>
       <Header />
       <Navbar />
-      <Results results={results} />
+      <Results />
     </div>
   );
 }
 
-export async function getServerSideProps(context) {
-  const genre = context.query.genre;
+// export async function getServerSideProps(context) {
+//   const genre = context.query.genre;
 
-  const request = await fetch(
-    `https://api.themoviedb.org/3${
-      requests[genre]?.url || requests.fetchTrending.url
-    }`
-  ).then((res) => res.json());
+//   const request = await fetch(
+//     `https://api.themoviedb.org/3${
+//       requests[genre]?.url || requests.fetchTrending.url
+//     }`
+//   ).then((res) => res.json());
 
-  return {
-    props: {
-      results: request.results,
-    },
-  };
-}
+//   return {
+//     props: {
+//       results: request.results,
+//     },
+//   };
+// }

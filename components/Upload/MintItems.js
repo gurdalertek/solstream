@@ -31,7 +31,7 @@ export default function MintItems() {
             }`}
             onClick={isAd}
           >
-            Adspace
+            Advertisement
           </button>
         </div>
         {isVideo ? <MintVideos /> : <MintAds />}
