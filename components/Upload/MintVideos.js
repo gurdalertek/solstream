@@ -30,29 +30,36 @@ export default function MintVideos() {
   async function createVideo(e) {
     e.preventDefault();
 
-    console.log("checking 1");
-    // Get the values from the inputs
     const videoTitle = document.getElementById("videoTitle").value;
     const videoDescription = document.getElementById("videoDescription").value;
     const videoFile = document.getElementById("videoFile").files[0];
+    const pictureFile = document.getElementById("pictureFile").files[0];
     const selectedCategory = selected;
 
     let ipfsVideo = "";
+    let ipfsThumbnail = "";
 
     if (videoFile) {
       console.log("uploading file");
       await saveFile("videoContent", videoFile, { saveIPFS: true }).then(
         async (hash) => {
-          console.log(hash);
           ipfsVideo = hash._ipfs;
         }
       );
     }
-    console.log("check2");
+    if (pictureFile) {
+      console.log("uploading file");
+      await saveFile("thumbnail", pictureFile, { saveIPFS: true }).then(
+        async (hash) => {
+          ipfsThumbnail = hash._ipfs;
+        }
+      );
+    }
 
     const metadata = {
       name: videoTitle,
       content: ipfsVideo,
+      thumbnail: ipfsThumbnail,
       description: videoDescription,
       category: selectedCategory,
     };
@@ -71,12 +78,10 @@ export default function MintVideos() {
     const category = new ChannelCategory();
     category.set("objectId", selectedId[selected]);
 
-    console.log(selectedCategory);
-    console.log(category);
-
     videoContent.set("videoTitle", videoTitle);
     videoContent.set("videoDescription", videoDescription);
     videoContent.set("videoFile", ipfsVideo);
+    videoContent.set("pictureFile", ipfsThumbnail);
     videoContent.set("category", category);
     videoContent.save().then((object) => {
       // contractCall(object);
@@ -100,11 +105,22 @@ export default function MintVideos() {
           placeholder="Description"
           className="bg-[#9945FF] bg-opacity-10 outline-none py-2 rounded-xl px-2"
         />
-        <input
-          id="videoFile"
-          type={"file"}
-          className="bg-[#9945FF] bg-opacity-10 outline-none py-2 rounded-xl px-2"
-        />
+        <div>
+          <p>Video Content</p>
+          <input
+            id="videoFile"
+            type={"file"}
+            className="bg-[#9945FF] bg-opacity-10 outline-none py-2 rounded-xl px-2"
+          />
+        </div>
+        <div>
+          <p>Thumbnail</p>
+          <input
+            id="pictureFile"
+            type={"file"}
+            className="bg-[#9945FF] bg-opacity-10 outline-none py-2 rounded-xl px-2"
+          />
+        </div>
         <div className="w-72">
           <Listbox value={selected} onChange={setSelected}>
             <div className="relative mt-1">
