@@ -6,11 +6,7 @@ export default function Uploads() {
       <h1 className="flex flex-start items-center justify-center mb-4 mt-8 w-1/12">
         RECENTLY
       </h1>
-      <div className="flex items-center justify-center p-2 space-x-4">
-        <VideoItems />
-        <VideoItems />
-        <VideoItems />
-      </div>
+      <div className="flex items-center justify-center p-2 space-x-4"></div>
     </div>
   );
 }
