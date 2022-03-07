@@ -1,26 +1,60 @@
 import { useEffect, useRef, useState } from "react";
 import { useMoralis } from "react-moralis";
-import VideoJs, { VideoJS } from "./VideoJs";
+import { VideoJS } from "./VideoJs";
+import "videojs-overlay/dist/videojs-overlay.js";
+import overlay from "videojs-overlay";
 
-export default function Results() {
+export default function VideoItems(props) {
   const { Moralis } = useMoralis();
 
   const [videoJsOptions, setVideoJsOptions] = useState({
     controls: true,
     responsive: true,
     fluid: true,
-    poster:
-      "https://ipfs.moralis.io:2053/ipfs/QmNaiFBVjsoNrUPD3beFaoTwxVzfycjtfLJqKXos2QKhFq",
+    poster: props.video.get("pictureFile"),
     sources: [
       {
-        src: "https://ipfs.moralis.io:2053/ipfs/QmcWkssGgLzxN6PPgfK4QjJwdwnc533QMmeyZGMoTmgvhz",
-        // src: "https://ipfs.moralis.io:2053/ipfs/QmbAvrABx5zEk18uD8rrPf9hDrcwqPc3n5GpXYGB9NHfGF",
+        src: props.video.get("videoFile"),
         type: "video/mp4",
       },
     ],
   });
 
+  const [nature, setNature] = useState([]);
+
   const playerRef = useRef(null);
+
+  useEffect(() => {
+    const AdContent = Moralis.Object.extend("AdContent");
+    const query = new Moralis.Query(AdContent);
+
+    const ChannelCategory = Moralis.Object.extend("ChannelCategory");
+    const category = new ChannelCategory();
+
+    // NATURE
+    category.set("objectId", props.video.get("category").id);
+    query.equalTo("category", category);
+    query.limit(4);
+
+    query.find().then(function (results) {
+      let category = [];
+      results.forEach((result) => {
+        console.log(result);
+        category.push({
+          content: result.get("adDescription"),
+          start: 3,
+          end: 33,
+        });
+      });
+      setNature(category);
+      console.log(nature);
+      console.log(category);
+
+      playerRef.current.overlay({
+        overlays: category,
+      });
+    });
+  }, []);
 
   const handlePlayerReady = (player) => {
     playerRef.current = player;
@@ -34,22 +68,12 @@ export default function Results() {
     });
   };
 
-  useEffect(() => {
-    setVideoJsOptions();
-  }, []);
-
   return (
     <div className="border-[#14F195] border-2 cursor-pointer rounded-lg bg-[#2c3531] w-96 h-64 flex flex-col">
       <h1 className="py-1 pl-1 border-b bg-[#2c3531] rounded-t-lg border-[#14F195]">
-        TITLE
+        {props.video.get("videoTitle")}
       </h1>
-      {/* <p className="flex items-center justify-center h-full text-[#9945FF]">
-        CONTENT
-      </p> */}
       <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
-      {/* <p className="py-1 pl-1 border-t bg-[#2c3531] rounded-b-lg border-[#14F195]">
-        CREATOR
-      </p> */}
     </div>
   );
 }

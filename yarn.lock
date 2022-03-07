@@ -5256,7 +5256,7 @@
     "once" "^1.3.0"
     "path-is-absolute" "^1.0.0"
 
-"global@^4.3.1", "global@^4.4.0", "global@~4.4.0":
+"global@^4.3.1", "global@^4.3.2", "global@^4.4.0", "global@~4.4.0":
   "integrity" "sha512-wv/LAoHdRE3BeTGz53FAamhGlPLhlssK45usmGFThIi4XqnBmjKQ16u+RNbP7WvigRZDxUsM0J3gcQ5yicaL0w=="
   "resolved" "https://registry.npmjs.org/global/-/global-4.4.0.tgz"
   "version" "4.4.0"
@@ -9264,6 +9264,14 @@
   "integrity" "sha512-g8vHMKK2/JGorSfqAZQUmYYNnXmfec4MLhwtEFS+mMs2IDY398GLysy6BH6K+aS1KMNu/xWZ8Sue/X/mdQPliA=="
   "resolved" "https://registry.npmjs.org/videojs-font/-/videojs-font-3.2.0.tgz"
   "version" "3.2.0"
+
+"videojs-overlay@^2.1.5":
+  "integrity" "sha512-BPpW8ayC/3fX+JOegxvzU9MDS1MBuF3l6DWy5DXTmhjvDen8j5p/q46UGyCkUb2H9ljnwetTIkIPMza0iP41Bw=="
+  "resolved" "https://registry.npmjs.org/videojs-overlay/-/videojs-overlay-2.1.5.tgz"
+  "version" "2.1.5"
+  dependencies:
+    "global" "^4.3.2"
+    "video.js" "^6 || ^7"
 
 "videojs-vtt.js@^0.15.3":
   "integrity" "sha512-5FvVsICuMRx6Hd7H/Y9s9GDeEtYcXQWzGMS+sl4UX3t/zoHp3y+isSfIPRochnTH7h+Bh1ILyC639xy9Z6kPag=="

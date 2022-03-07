@@ -1,5 +1,6 @@
 import React from "react";
 import videojs from "video.js";
+import overlay from "videojs-overlay";
 import "video.js/dist/video-js.css";
 
 export const VideoJS = (props) => {

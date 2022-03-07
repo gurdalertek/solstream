@@ -7,7 +7,9 @@ export default function Results() {
   const [cities, setCities] = useState([]);
   const [nature, setNature] = useState([]);
   const [culture, setCulture] = useState([]);
-  const [quotes, setQuotes] = useState([]);
+  const [crypto, setCrypto] = useState([]);
+
+  // CITY USE EFFECT
 
   useEffect(() => {
     const VideoContent = Moralis.Object.extend("VideoContent");
@@ -16,8 +18,32 @@ export default function Results() {
     const ChannelCategory = Moralis.Object.extend("ChannelCategory");
     const category = new ChannelCategory();
 
-    category.set("objectId", "F4Pc5hBl3vp4QzXMaKT3SknH");
+    category.set("objectId", "1s39DicgpnWmRe8ihCCHB70e");
     query.equalTo("category", category);
+    query.limit(4);
+
+    query.find().then(function (results) {
+      let category = [];
+      results.forEach((result) => {
+        category.push(result);
+      });
+      setCities(category);
+      console.log(cities);
+    });
+  }, []);
+
+  // NATURE USE EFFECT
+
+  useEffect(() => {
+    const VideoContent = Moralis.Object.extend("VideoContent");
+    const query = new Moralis.Query(VideoContent);
+
+    const ChannelCategory = Moralis.Object.extend("ChannelCategory");
+    const category = new ChannelCategory();
+
+    category.set("objectId", "k2S3qyAbqVTmOMgFG8gNr7e0");
+    query.equalTo("category", category);
+    query.limit(4);
 
     query.find().then(function (results) {
       let category = [];
@@ -25,7 +51,52 @@ export default function Results() {
         category.push(result);
       });
       setNature(category);
-      console.log(category);
+      console.log(nature);
+    });
+  }, []);
+
+  // CULTURE USE EFFECT
+
+  useEffect(() => {
+    const VideoContent = Moralis.Object.extend("VideoContent");
+    const query = new Moralis.Query(VideoContent);
+
+    const ChannelCategory = Moralis.Object.extend("ChannelCategory");
+    const category = new ChannelCategory();
+
+    category.set("objectId", "B55id0GM7e6Qdxr2gb9LC9zj");
+    query.equalTo("category", category);
+    query.limit(4);
+
+    query.find().then(function (results) {
+      let category = [];
+      results.forEach((result) => {
+        category.push(result);
+      });
+      setCulture(category);
+      console.log(culture);
+    });
+  }, []);
+
+  // CRYPTO USE EFFECT
+  useEffect(() => {
+    const VideoContent = Moralis.Object.extend("VideoContent");
+    const query = new Moralis.Query(VideoContent);
+
+    const ChannelCategory = Moralis.Object.extend("ChannelCategory");
+    const category = new ChannelCategory();
+
+    category.set("objectId", "AFeyVAoaurD6lzwLBWYW135N");
+    query.equalTo("category", category);
+    query.limit(4);
+
+    query.find().then(function (results) {
+      let category = [];
+      results.forEach((result) => {
+        category.push(result);
+      });
+      setCrypto(category);
+      console.log(crypto);
     });
   }, []);
 
@@ -36,9 +107,9 @@ export default function Results() {
         CITIES{" "}
       </h1>
       <div className="flex items-center justify-center p-2 space-x-4">
-        <VideoItems />
-        <VideoItems />
-        <VideoItems />
+        {cities.map((video, index) => {
+          return <VideoItems key={index} video={video} />;
+        })}
       </div>
       <hr className="mt-4" />
       <h1 className="flex flex-start items-center justify-center ml-8 my-8 w-1/12">
@@ -46,9 +117,9 @@ export default function Results() {
         NATURE{" "}
       </h1>
       <div className="flex items-center justify-center p-2 space-x-4">
-        <VideoItems />
-        <VideoItems />
-        <VideoItems />
+        {nature.map((video, index) => {
+          return <VideoItems key={index} video={video} />;
+        })}
       </div>
       <hr className="mt-4 text-[#9945FF]" />
       <h1 className="flex flex-start items-center justify-center ml-8 my-8 w-1/12">
@@ -56,9 +127,12 @@ export default function Results() {
         CULTURE{" "}
       </h1>
       <div className="flex items-center justify-center p-2 space-x-4">
-        <VideoItems />
-        <VideoItems />
-        <VideoItems />
+        {culture.map((video, index) => {
+          return <VideoItems key={index} video={video} />;
+        })}
+        {culture.map((video, index) => {
+          return <VideoItems key={index} video={video} />;
+        })}
       </div>
       <hr className="mt-4 text-[#9945FF]" />
       <h1 className="flex flex-start items-center justify-center ml-8 my-8 w-1/12">
@@ -66,9 +140,9 @@ export default function Results() {
         CRYPTO{" "}
       </h1>
       <div className="flex items-center justify-center p-2 space-x-4">
-        <VideoItems />
-        <VideoItems />
-        <VideoItems />
+        {crypto.map((video, index) => {
+          return <VideoItems key={index} video={video} />;
+        })}
       </div>
       <hr className="mt-4 text-[#9945FF]" />
     </div>
