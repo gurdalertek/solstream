@@ -69,8 +69,8 @@ export default function VideoItems(props) {
   };
 
   return (
-    <div className="border-[#14F195] border-2 cursor-pointer rounded-lg bg-[#2c3531] w-96 h-64 flex flex-col">
-      <h1 className="py-1 pl-1 border-b bg-[#2c3531] rounded-t-lg border-[#14F195]">
+    <div className="border-[#14F195] border-2 cursor-pointer rounded-lg bg-black bg-opacity-25 w-96 h-64 flex flex-col">
+      <h1 className="py-1 pl-1 border-b bg-black bg-opacity-25 rounded-t-lg border-[#14F195]">
         {props.video.get("videoTitle")}
       </h1>
       <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
