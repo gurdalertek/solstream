@@ -80,14 +80,14 @@ export default function Header() {
       {isAuthenticated ? (
         <button
           onClick={logoutPhantom}
-          className="border-2 border-[#14F195] p-2 rounded-xl whitespace-nowrap"
+          className="border-2 border-[#14F195] p-2 m-2 rounded-xl whitespace-nowrap"
         >
-          User
+          Logout
         </button>
       ) : (
         <button
           onClick={authPhantom}
-          className="border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap"
+          className="border-2 border-[#14F195] p-2 m-2 rounded-lg whitespace-nowrap"
         >
           Connect User
         </button>

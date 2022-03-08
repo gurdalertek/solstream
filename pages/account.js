@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import Account from "../components/Account/Account";
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
+import Overview from "../components/Account/Overview";
+import Header from "../components/TopEnd/Header";
+import Navbar from "../components/TopEnd/Navbar";
 
 export default function account() {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
@@ -23,7 +23,7 @@ export default function account() {
       </Head>
       <Header />
       <Navbar />
-      <Account />
+      <Overview />
     </div>
   );
 }

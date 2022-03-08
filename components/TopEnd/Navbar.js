@@ -1,12 +1,12 @@
-import requests from "../utils/requests";
+import requests from "../../utils/requests";
 import { useRouter } from "next/router";
 
 export default function Navbar() {
   const router = useRouter();
 
-  function navigate() {
-    router.push(`/?genre=${key}`);
-  }
+  // function navigate() {
+  //   router.push(`/?genre=${key}`);
+  // }
 
   return (
     <nav className="relative">
@@ -14,7 +14,7 @@ export default function Navbar() {
         {Object.entries(requests).map(([key, { title, url }]) => (
           <h2
             key={key}
-            onClick={navigate}
+            // onClick={navigate}
             className="cursor-pointer hover:text-black transition duration-100 my-2 transform hover:scale-125 text-[#2c3531] active:text-teal-400"
           >
             {title}

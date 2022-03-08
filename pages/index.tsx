@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
+import Header from "../components/TopEnd/Header";
+import Navbar from "../components/TopEnd/Navbar";
 import Results from "../components/Results";
 import requests from "../utils/requests";
 

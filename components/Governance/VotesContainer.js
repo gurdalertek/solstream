@@ -47,7 +47,7 @@ export default function VotesContainer() {
         <div className="flex items-center w-2/12 justify-between ">
           <div
             onClick={setUp}
-            className={` text-sm bg-black bg-opacity-20 p-1 rounded-xl ${
+            className={` cursor-pointer text-sm bg-black bg-opacity-20 p-1 rounded-xl ${
               isUp && "text-green-500"
             }`}
           >
@@ -55,7 +55,7 @@ export default function VotesContainer() {
           </div>
           <div
             onClick={setDown}
-            className={`text-sm bg-black bg-opacity-20 p-1 rounded-xl ${
+            className={`cursor-pointer text-sm bg-black bg-opacity-20 p-1 rounded-xl ${
               isDown && "text-red-500"
             }`}
           >

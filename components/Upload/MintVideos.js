@@ -95,18 +95,18 @@ export default function MintVideos() {
   return (
     <div className=" flex flex-col items-center justify-center my-8">
       <h1 className="mb-8 ">Upload Video</h1>
-      <form className="flex flex-col items-cennter justify-center space-y-8">
+      <form className="flex flex-col items-center w-full justify-center space-y-8">
         <input
           id={"videoTitle"}
           type={"text"}
           placeholder="Title"
-          className="bg-[#9945FF] bg-opacity-10 outline-none py-2 rounded-xl px-2"
+          className="bg-[#9945FF] w-full bg-opacity-10 outline-none py-2 rounded-xl px-2"
         />
         <textarea
           id={"videoDescription"}
           type={"text"}
           placeholder="Description"
-          className="bg-[#9945FF] bg-opacity-10 outline-none py-2 rounded-xl px-2"
+          className="bg-[#9945FF] w-full bg-opacity-10 outline-none py-2 rounded-xl px-2"
         />
         <div>
           <p>Video Content</p>

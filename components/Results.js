@@ -102,7 +102,7 @@ export default function Results() {
 
   return (
     <div className="flex flex-col justify-center">
-      <h1 className="flex flex-start items-center justify-center ml-8 my-8 w-1/12">
+      <h1 className="flex text-xl flex-start items-center justify-center ml-8 my-8 w-1/12">
         {" "}
         CITIES{" "}
       </h1>
@@ -112,7 +112,7 @@ export default function Results() {
         })}
       </div>
       <hr className="mt-4" />
-      <h1 className="flex flex-start items-center justify-center ml-8 my-8 w-1/12">
+      <h1 className="flex text-xl flex-start items-center justify-center ml-8 my-8 w-1/12">
         {" "}
         NATURE{" "}
       </h1>
@@ -122,7 +122,7 @@ export default function Results() {
         })}
       </div>
       <hr className="mt-4 text-[#9945FF]" />
-      <h1 className="flex flex-start items-center justify-center ml-8 my-8 w-1/12">
+      <h1 className="flex flex-start text-xl items-center justify-center ml-8 my-8 w-1/12">
         {" "}
         CULTURE{" "}
       </h1>
@@ -135,7 +135,7 @@ export default function Results() {
         })}
       </div>
       <hr className="mt-4 text-[#9945FF]" />
-      <h1 className="flex flex-start items-center justify-center ml-8 my-8 w-1/12">
+      <h1 className="flex flex-start text-xl items-center justify-center ml-8 my-8 w-1/12">
         {" "}
         CRYPTO{" "}
       </h1>

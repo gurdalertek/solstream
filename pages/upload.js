@@ -1,9 +1,8 @@
 import Head from "next/head";
 import { useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import Account from "../components/Account/Account";
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
+import Header from "../components/TopEnd/Header";
+import Navbar from "../components/TopEnd/Navbar";
 import MintItems from "../components/Upload/MintItems";
 
 export default function Upload() {
