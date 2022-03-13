@@ -89,7 +89,7 @@ export default function Header() {
           onClick={authPhantom}
           className="border-2 border-[#14F195] p-2 m-2 rounded-lg whitespace-nowrap"
         >
-          Connect User
+          Connect Phantom Wallet
         </button>
       )}
     </header>
