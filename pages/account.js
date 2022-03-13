@@ -5,7 +5,7 @@ import Overview from "../components/Account/Overview";
 import Header from "../components/TopEnd/Header";
 import Navbar from "../components/TopEnd/Navbar";
 
-export default function account() {
+export default function Account() {
   const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
     useMoralis();
 
