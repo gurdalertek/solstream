@@ -71,8 +71,10 @@ export default function Account() {
     console.log(array[0]);
   }
 
+  // Make a token ... add its token address
   const tokenAddress = "5DTYyuw432dAjHRqEGNwkNqQSvHitQW26DvPTuuwPsHu";
   const tokenAddressPublicKey = new PublicKey(tokenAddress);
+  // make an account for the token
   const tokenAccount = "43jztX9LUHVzmiqM1wx6CJaVK7ZNFaXZKZXqdU2hyQBM";
   const tokenAccountPublicKey = new PublicKey(tokenAccount);
 
@@ -81,6 +83,7 @@ export default function Account() {
     const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
     // Generate a new wallet keypair and airdrop SOL
+    // add the secret key in env file
     const fromWallet = Keypair.fromSecretKey(
       Uint8Array.from([
         81, 44, 238, 97, 221, 219, 78, 163, 163, 238, 171, 194, 50, 178, 32,
