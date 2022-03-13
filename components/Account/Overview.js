@@ -64,7 +64,26 @@ export default function Account() {
         {/* {userAddress.slice(0, 8).concat("...")} */}
         {userAddress}
       </div>
-      <div className="mt-8 flex flex-row">
+      <div className="flex flex-row items-center w-6/12 justify-evenly mt-8">
+        <button
+          className={`border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap ${
+            isGovernor && "text-white underline"
+          }`}
+          onClick={govSwitch}
+        >
+          Votes
+        </button>
+        <SwitchHorizontalIcon className="h-5" />
+        <button
+          className={`border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap ${
+            !isGovernor && "text-white underline"
+          }`}
+          onClick={govSwitch}
+        >
+          Mint Gov Token
+        </button>
+      </div>
+      {/* <div className="mt-8 flex flex-row">
         <button
           className={`border-2 border-[#14F195] flex flex-row items-center p-2 m-4 rounded-lg whitespace-nowrap`}
           onClick={govSwitch}
@@ -72,7 +91,7 @@ export default function Account() {
           {!isGovernor ? "Votes" : "Governance Token"}
           <SwitchHorizontalIcon className="h-3 ml-2" />
         </button>
-      </div>
+      </div> */}
       {isGovernor ? (
         <div className="bg-black bg-opacity-25 mt-8 sm:w-6/12 w-full flex flex-col items-center justify-center mb-8 rounded-xl">
           <div className="flex w-full flex-col items-center justify-center my-8">

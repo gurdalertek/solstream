@@ -4,9 +4,8 @@ import { useMoralis } from "react-moralis";
 import Header from "../components/TopEnd/Header";
 import Navbar from "../components/TopEnd/Navbar";
 import Results from "../components/Results";
-import requests from "../utils/requests";
 
-export default function Home({ results }) {
+export default function Home() {
   const {
     isWeb3Enabled,
     enableWeb3,
@@ -20,7 +19,6 @@ export default function Home({ results }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
 
-  // if (!isAuthenticated) return <Login />;
   return (
     <div>
       <Head>
@@ -33,19 +31,3 @@ export default function Home({ results }) {
     </div>
   );
 }
-
-// export async function getServerSideProps(context) {
-//   const genre = context.query.genre;
-
-//   const request = await fetch(
-//     `https://api.themoviedb.org/3${
-//       requests[genre]?.url || requests.fetchTrending.url
-//     }`
-//   ).then((res) => res.json());
-
-//   return {
-//     props: {
-//       results: request.results,
-//     },
-//   };
-// }

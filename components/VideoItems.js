@@ -69,7 +69,7 @@ export default function VideoItems(props) {
   };
 
   return (
-    <div className="border-[#14F195] border-2 cursor-pointer rounded-lg bg-black bg-opacity-25 w-96 h-64 flex flex-col">
+    <div className="border-[#14F195] border-2 cursor-pointer rounded-lg bg-black bg-opacity-25 w-96 h-72 flex flex-col">
       <h1 className="py-1 pl-1 border-b bg-black bg-opacity-25 rounded-t-lg border-[#14F195]">
         {props.video.get("videoTitle")}
       </h1>

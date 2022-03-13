@@ -82,7 +82,7 @@ export default function MintVideos() {
         <textarea
           id={"adDescription"}
           type={"text"}
-          placeholder="Description"
+          placeholder="Description (max characters 150)"
           className="bg-[#9945FF] w-full  bg-opacity-10 outline-none py-2 rounded-xl px-2"
         />
         <div className="w-72">
