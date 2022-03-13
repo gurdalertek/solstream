@@ -97,9 +97,8 @@ export default function Account() {
     console.log("From Wallet:", fromWallet.publicKey.toBase58());
 
     // Generate a new wallet to receive newly minted token
-    const toWallet = new PublicKey(
-      "SeUCSriHP8w5gHoCoHHs9DNCPQumWz4djLahJqHDxZn"
-    );
+    let user = Moralis.User.current();
+    const toWallet = new PublicKey(user.get("solAddress"));
 
     const gettingMint = await getMint(connection, tokenAddressPublicKey);
     console.log("mint", gettingMint);
