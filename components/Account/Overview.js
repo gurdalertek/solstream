@@ -4,6 +4,26 @@ import { useMoralisSolanaApi, useMoralisSolanaCall } from "react-moralis";
 import Image from "next/image";
 import VotesContainer from "../Governance/VotesContainer";
 import { SwitchHorizontalIcon } from "@heroicons/react/outline";
+import {
+  clusterApiUrl,
+  Connection,
+  Keypair,
+  LAMPORTS_PER_SOL,
+  PublicKey,
+  web3,
+} from "@solana/web3.js";
+import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import {
+  getAccount,
+  createMint,
+  getMint,
+  createAccount,
+  mintTo,
+  getOrCreateAssociatedTokenAccount,
+  getAssociatedTokenAddress,
+  transfer,
+} from "@solana/spl-token";
+import { actions, NodeWallet } from "@metaplex/js";
 
 export default function Account() {
   const { user, Moralis } = useMoralis();
@@ -31,8 +51,85 @@ export default function Account() {
     // setIsGovernor(true)}
   }, [user]);
 
-  function mintToken() {
-    // contract Call to transfer token from Token Account to User Account
+  const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
+    "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+  );
+
+  let associatedAddress = "";
+
+  async function findAssociatedTokenAddress(walletAddress, tokenMintAddress) {
+    const array = await PublicKey.findProgramAddress(
+      [
+        walletAddress.toBuffer(),
+        TOKEN_PROGRAM_ID.toBuffer(),
+        tokenMintAddress.toBuffer(),
+      ],
+      SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID
+    );
+    associatedAddress = array[0];
+    // setAssociatedAddress(array[0]);
+    console.log(array[0]);
+  }
+
+  const tokenAddress = "5DTYyuw432dAjHRqEGNwkNqQSvHitQW26DvPTuuwPsHu";
+  const tokenAddressPublicKey = new PublicKey(tokenAddress);
+  const tokenAccount = "43jztX9LUHVzmiqM1wx6CJaVK7ZNFaXZKZXqdU2hyQBM";
+  const tokenAccountPublicKey = new PublicKey(tokenAccount);
+
+  async function mintToken() {
+    // Connect to cluster
+    const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+
+    // Generate a new wallet keypair and airdrop SOL
+    const fromWallet = Keypair.fromSecretKey(
+      Uint8Array.from([
+        81, 44, 238, 97, 221, 219, 78, 163, 163, 238, 171, 194, 50, 178, 32,
+        130, 143, 102, 246, 161, 246, 179, 223, 125, 147, 31, 194, 201, 52, 41,
+        4, 234, 238, 155, 132, 114, 144, 38, 86, 246, 244, 55, 188, 209, 154,
+        130, 54, 68, 0, 165, 65, 110, 90, 75, 3, 223, 101, 84, 204, 238, 10,
+        101, 81, 25,
+      ])
+    );
+
+    console.log("From Wallet:", fromWallet.publicKey.toBase58());
+
+    // Generate a new wallet to receive newly minted token
+    const toWallet = new PublicKey(
+      "SeUCSriHP8w5gHoCoHHs9DNCPQumWz4djLahJqHDxZn"
+    );
+
+    const gettingMint = await getMint(connection, tokenAddressPublicKey);
+    console.log("mint", gettingMint);
+    const mint = gettingMint.address;
+    console.log(mint.toBase58());
+
+    // Get the token account of the fromWallet address, and if it does not exist, create it
+    const fromTokenAccount = await getOrCreateAssociatedTokenAccount(
+      connection,
+      fromWallet,
+      mint,
+      fromWallet.publicKey
+    );
+    console.log("From Token Account:", fromTokenAccount);
+
+    // // Get the token account of the toWallet address, and if it does not exist, create it
+    const toTokenAccount = await getOrCreateAssociatedTokenAccount(
+      connection,
+      fromWallet,
+      mint,
+      toWallet
+    );
+    console.log("To Token Account:", toTokenAccount);
+
+    const signature = await transfer(
+      connection,
+      fromWallet,
+      fromTokenAccount.address,
+      toTokenAccount.address,
+      fromWallet.publicKey,
+      1
+    );
+    console.log("transfer tx:", signature);
   }
 
   function govSwitch() {
