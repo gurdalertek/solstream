@@ -1,13 +1,13 @@
 ## Solstream Help
 
-# Connecting Phantom wallet
+### Connecting Phantom wallet
 
-# Browsing Videos
+### Browsing Videos
 
-# Uploading Videos
+### Uploading Videos
 
-# Submitting Advertisements
+### Submitting Advertisements
 
-# Minting Governance Token
+### Minting Governance Token
 
-# Voting
+### Voting
