@@ -118,7 +118,7 @@ export default function Account() {
               className="object-contain"
               height={250}
               width={250}
-              src="/img2.png"
+              src="/solstreamgov.png"
             />
             <button
               className={`border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap`}

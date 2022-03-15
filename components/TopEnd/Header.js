@@ -76,22 +76,35 @@ export default function Header() {
         width={125}
         src="https://links.papareact.com/ua6"
       /> */}
-      <h1 className="text-white whitespace-nowrap">S O L S T R E A M</h1>
-      {isAuthenticated ? (
+      {/* <h1 className="text-white whitespace-nowrap">S O L S T R E A M</h1> */}
+      <Image src={"/logodes3.png"} width={250} height={50} />
+      <div>
+        {isAuthenticated ? (
+          <button
+            onClick={logoutPhantom}
+            className="border-2 border-[#14F195] p-2 m-2 rounded-xl whitespace-nowrap"
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            onClick={authPhantom}
+            className="border-2 border-[#14F195] p-2 m-2 rounded-lg whitespace-nowrap"
+          >
+            Connect Phantom Wallet
+          </button>
+        )}
         <button
-          onClick={logoutPhantom}
-          className="border-2 border-[#14F195] p-2 m-2 rounded-xl whitespace-nowrap"
-        >
-          Logout
-        </button>
-      ) : (
-        <button
-          onClick={authPhantom}
+          onClick={() =>
+            window.open(
+              "https://github.com/sol-blockstream/solstream/blob/main/doc/Help.md"
+            )
+          }
           className="border-2 border-[#14F195] p-2 m-2 rounded-lg whitespace-nowrap"
         >
-          Connect Phantom Wallet
+          Help
         </button>
-      )}
+      </div>
     </header>
   );
 }

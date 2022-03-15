@@ -9,6 +9,7 @@ export default function MintVideos() {
   const [selected, setSelected] = useState();
   const [categories, setCategories] = useState([]);
   const [selectedId, setSelectedId] = useState(new Map());
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     const ChannelCategory = Moralis.Object.extend("ChannelCategory");
@@ -27,6 +28,7 @@ export default function MintVideos() {
 
   async function createAd(e) {
     e.preventDefault();
+    setIsUploading(true);
     const adTitle = document.getElementById("adTitle").value;
     const adDescription = document.getElementById("adDescription").value;
     const adLink = document.getElementById("link").value;
@@ -59,6 +61,7 @@ export default function MintVideos() {
     adContent.set("category", category);
     adContent.save().then((object) => {
       // contractCall(object);
+      setIsUploading(false);
       alert("saved");
     });
   }
@@ -150,6 +153,7 @@ export default function MintVideos() {
         >
           Confirm
         </button>
+        {isUploading && <h1>Uploading</h1>}
       </form>
     </div>
   );

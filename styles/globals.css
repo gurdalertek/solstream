@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-[#2c3531] text-gray-300 bg-opacity-80;
+    /* @apply bg-[#2c3531] text-gray-300 bg-opacity-80; */
+    @apply bg-black text-gray-300 bg-opacity-80;
   }
 }
 
