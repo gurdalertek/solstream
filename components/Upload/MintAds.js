@@ -7,6 +7,7 @@ import idl from "../../utils/solstream.json";
 import { Provider, Program } from "@project-serum/anchor";
 import * as anchor from "@project-serum/anchor";
 // import program from "./Program";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
 
 import {
   clusterApiUrl,
@@ -98,13 +99,21 @@ export default function MintVideos() {
   let time = date.getTime() + 432000;
 
   async function contractCall(object) {
-    anchor.setProvider(await window.solana.connect());
+    // const wallet = await window.solana.connect();
+
     const ad = anchor.web3.Keypair.generate();
+    // const provider = new anchor.Provider(
+    //   connection,
+    //   await window.solana.connect(),
+    //   anchor.Provider.defaultOptions()
+    // );
 
     // Address of the deployed program.
     const programId = new anchor.web3.PublicKey(idl.metadata.address);
 
     // Generate the program client from IDL.
+    // const program = new Program(idl, programId, provider);
+
     const program = new anchor.Program(idl, programId);
 
     // Execute the RPC.

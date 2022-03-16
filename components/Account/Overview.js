@@ -220,9 +220,11 @@ export default function Account() {
   return (
     <div className="mt-8 flex flex-col items-center justify-center">
       <h1 className="flex text-xl font-bold mb-8">ACCOUNT</h1>
+      <p className="font-bold text-xs my-2 ">User Address</p>
+
       <div
         onClick={() => navigator.clipboard.writeText(userAddress)}
-        className="cursor-pointer hover:underline flex active:text-[#9945FF]"
+        className="cursor-pointer hover:underline flex flex-col items-center active:text-[#9945FF]"
       >
         {userAddress}
       </div>
@@ -302,6 +304,7 @@ export default function Account() {
                 width={250}
                 src="/solstreamgov.png"
               />
+              <p>As Governor you can vote for advertisement proposals.</p>
             </div>
           )}
         </div>
