@@ -99,9 +99,10 @@ export default function MintVideos() {
   let time = date.getTime() + 432000;
 
   async function contractCall(object) {
-    // const wallet = await window.solana.connect();
-
     const ad = anchor.web3.Keypair.generate();
+
+    let transaction = new Transaction();
+
     // const provider = new anchor.Provider(
     //   connection,
     //   await window.solana.connect(),
@@ -109,37 +110,37 @@ export default function MintVideos() {
     // );
 
     // Address of the deployed program.
-    const programId = new anchor.web3.PublicKey(idl.metadata.address);
+    // const programId = new anchor.web3.PublicKey(idl.metadata.address);
 
     // Generate the program client from IDL.
     // const program = new Program(idl, programId, provider);
 
-    const program = new anchor.Program(idl, programId);
+    // const program = new anchor.Program(idl, programId);
 
     // Execute the RPC.
 
     // await program.rpc.initialize();
 
-    await program.rpc.createAd(
-      object.get("adTitle"),
-      object.get("adDescription"),
-      object.id,
+    // await program.rpc.createAd(
+    //   object.get("adTitle"),
+    //   object.get("adDescription"),
+    //   object.id,
 
-      new anchor.BN(time),
-      {
-        accounts: {
-          ad: ad.publicKey,
-          author: new PublicKey(user.get("solAddress")),
-          systemProgram: anchor.web3.SystemProgram.programId,
+    //   new anchor.BN(time),
+    //   {
+    //     accounts: {
+    //       ad: ad.publicKey,
+    //       author: new PublicKey(user.get("solAddress")),
+    //       systemProgram: anchor.web3.SystemProgram.programId,
 
-          // Accounts here...
-        },
-        signers: [
-          ad,
-          // Key pairs of signers here...
-        ],
-      }
-    );
+    //       // Accounts here...
+    //     },
+    //     signers: [
+    //       ad,
+    //       // Key pairs of signers here...
+    //     ],
+    //   }
+    // );
     object.set("pubKey", ad.publicKey.toBase58());
     object.set("active", true);
     object.save();
