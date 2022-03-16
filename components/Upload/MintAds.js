@@ -2,13 +2,9 @@ import { useMoralis } from "react-moralis";
 import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
-// import solstream from "../../utils/solstream";
 import idl from "../../utils/solstream.json";
-import { Provider, Program } from "@project-serum/anchor";
 import * as anchor from "@project-serum/anchor";
-// import program from "./Program";
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
-
+// import { provider } from "./PhantomWallet";
 import {
   clusterApiUrl,
   Connection,
@@ -17,22 +13,33 @@ import {
   Transaction,
   PublicKey,
 } from "@solana/web3.js";
-
-import { Token, TOKEN_PROGRAM_ID, AccountLayout } from "@solana/spl-token";
+import { Program, Provider, web3 } from "@project-serum/anchor";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import {
-  getAccount,
-  createMint,
-  getMint,
-  createAccount,
-  mintTo,
-  getOrCreateAssociatedTokenAccount,
-  getAssociatedTokenAddress,
-  transfer,
-} from "@solana/spl-token";
+  useWallet,
+  WalletProvider,
+  ConnectionProvider,
+} from "@solana/wallet-adapter-react";
+import {
+  WalletModalProvider,
+  WalletMultiButton,
+} from "@solana/wallet-adapter-react-ui";
+require("@solana/wallet-adapter-react-ui/styles.css");
 
 const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+const wallets = [new PhantomWalletAdapter()];
+
+// const { SystemProgram, Keypair } = web3;
 
 export default function MintVideos() {
+  const opts = {
+    preflightCommitment: "processed",
+  };
+
+  const wallet = useWallet();
+  const provider = new Provider(connection, wallet, opts.preflightCommitment);
+  const programID = new PublicKey(idl.metadata.address);
+
   const { Moralis, user } = useMoralis();
 
   const [selected, setSelected] = useState();
@@ -89,7 +96,7 @@ export default function MintVideos() {
     adContent.set("link", adLink);
     adContent.set("category", category);
     adContent.save().then((object) => {
-      contractCall(object);
+      // contractCall(object);
       setIsUploading(false);
       alert("saved");
     });
@@ -98,54 +105,49 @@ export default function MintVideos() {
   const date = new Date();
   let time = date.getTime() + 432000;
 
-  async function contractCall(object) {
-    const ad = anchor.web3.Keypair.generate();
+  // async function contractCall(object) {
+  //   const wallet = await window.solana;
+  //   // const provider = new Provider(connection, wallet, Provider.defaultOptions);
 
-    let transaction = new Transaction();
+  //   anchor.setProvider(provider);
+  //   const ad = anchor.web3.Keypair.generate();
 
-    // const provider = new anchor.Provider(
-    //   connection,
-    //   await window.solana.connect(),
-    //   anchor.Provider.defaultOptions()
-    // );
+  //   // Address of the deployed program.
+  //   const programId = new anchor.web3.PublicKey(idl.metadata.address);
 
-    // Address of the deployed program.
-    // const programId = new anchor.web3.PublicKey(idl.metadata.address);
+  //   // Generate the program client from IDL.
+  //   const program = new anchor.Program(idl, programId);
 
-    // Generate the program client from IDL.
-    // const program = new Program(idl, programId, provider);
+  //   // Execute the RPC.
 
-    // const program = new anchor.Program(idl, programId);
+  //   // await program.rpc.initialize();
 
-    // Execute the RPC.
+  //   console.log(ad.publicKey.toBase58());
 
-    // await program.rpc.initialize();
+  //   await program.rpc.createAd(
+  //     object.get("adTitle"),
+  //     object.get("adDescription"),
+  //     object.id,
 
-    // await program.rpc.createAd(
-    //   object.get("adTitle"),
-    //   object.get("adDescription"),
-    //   object.id,
+  //     new anchor.BN(time),
+  //     {
+  //       accounts: {
+  //         ad: ad.publicKey,
+  //         author: new PublicKey(user.get("solAddress")),
+  //         systemProgram: anchor.web3.SystemProgram.programId,
 
-    //   new anchor.BN(time),
-    //   {
-    //     accounts: {
-    //       ad: ad.publicKey,
-    //       author: new PublicKey(user.get("solAddress")),
-    //       systemProgram: anchor.web3.SystemProgram.programId,
-
-    //       // Accounts here...
-    //     },
-    //     signers: [
-    //       ad,
-    //       // Key pairs of signers here...
-    //     ],
-    //   }
-    // );
-    object.set("pubKey", ad.publicKey.toBase58());
-    object.set("active", true);
-    object.save();
-    console.log(ad.PublicKey.toBase58());
-  }
+  //         // Accounts here...
+  //       },
+  //       signers: [
+  //         ad,
+  //         // Key pairs of signers here...
+  //       ],
+  //     }
+  //   );
+  //   object.set("pubKey", ad.publicKey.toBase58());
+  //   object.set("active", true);
+  //   object.save();
+  // console.log(ad.PublicKey.toBase58());
 
   return (
     <div className=" flex flex-col items-center justify-center my-8">
