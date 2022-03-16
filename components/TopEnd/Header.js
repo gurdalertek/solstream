@@ -63,20 +63,13 @@ export default function Header() {
         </div>
 
         <div onClick={openCollection} className="">
-          <HeaderItem title="COLLECTION" Icon={CollectionIcon} />
+          <HeaderItem title="ADS" Icon={CollectionIcon} />
         </div>
 
         <div onClick={openAccount} className="">
           <HeaderItem title="ACCOUNT" Icon={UserIcon} />
         </div>
       </div>
-      {/* <Image
-        className="object-contain"
-        height={75}
-        width={125}
-        src="https://links.papareact.com/ua6"
-      /> */}
-      {/* <h1 className="text-white whitespace-nowrap">S O L S T R E A M</h1> */}
       <Image src={"/logodes3.png"} width={250} height={50} />
       <div>
         {isAuthenticated ? (

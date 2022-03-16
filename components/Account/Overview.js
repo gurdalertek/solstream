@@ -3,7 +3,10 @@ import { useMoralis } from "react-moralis";
 import { useMoralisSolanaApi, useMoralisSolanaCall } from "react-moralis";
 import Image from "next/image";
 import VotesContainer from "../Governance/VotesContainer";
-import { SwitchHorizontalIcon } from "@heroicons/react/outline";
+import {
+  CheckCircleIcon,
+  SwitchHorizontalIcon,
+} from "@heroicons/react/outline";
 import {
   clusterApiUrl,
   Connection,
@@ -12,7 +15,7 @@ import {
   PublicKey,
   web3,
 } from "@solana/web3.js";
-import { Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { Token, TOKEN_PROGRAM_ID, AccountLayout } from "@solana/spl-token";
 import {
   getAccount,
   createMint,
@@ -28,28 +31,101 @@ import { actions, NodeWallet } from "@metaplex/js";
 export default function Account() {
   const { user, Moralis } = useMoralis();
 
-  // const { account } = useMoralisSolanaApi();
+  const { account } = useMoralisSolanaApi();
 
-  // const options = {
-  //   network: "devnet",
-  //   address: "HsXZnAba2...",
-  // };
-  // const { fetch, data, isLoading } = useMoralisSolanaCall(
-  //   account.getNFTs,
-  //   options
-  // );
+  const [options, setOptions] = useState();
+
+  const { fetch, data, isLoading } = useMoralisSolanaCall(
+    account.getSPL,
+    options
+  );
 
   const [userAddress, setUserAddress] = useState();
+  const [availableSup, setAvailableSup] = useState(10);
 
-  const [votes, setVotes] = useState();
+  // const [votes, setVotes] = useState();
 
   const [isGovernor, setIsGovernor] = useState();
+  const [hasGovernor, setHasGovernor] = useState();
 
   useEffect(() => {
-    if (user) setUserAddress(user.get("solAddress"));
+    if (user) {
+      setUserAddress(user.get("solAddress"));
+    }
     //if (user holds governance token){
+
     // setIsGovernor(true)}
+  }, [user, data, isLoading]);
+
+  const [tokenGovOwned, setTokenGovOwned] = useState();
+
+  useEffect(() => {
+    async function getTokens() {
+      // Connect to cluster
+      const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+      const tokenAccounts = await connection.getTokenAccountsByOwner(
+        new PublicKey(user.get("solAddress")),
+        {
+          programId: TOKEN_PROGRAM_ID,
+        }
+      );
+      tokenAccounts.value.forEach((e) => {
+        const accountInfo = AccountLayout.decode(e.account.data);
+
+        const tokenID = new PublicKey(accountInfo.mint).toBase58();
+
+        if (
+          tokenID == "5DTYyuw432dAjHRqEGNwkNqQSvHitQW26DvPTuuwPsHu" &&
+          accountInfo.amount >= 1
+        ) {
+          setHasGovernor(true);
+          setTokenGovOwned(parseInt(accountInfo.amount));
+        }
+      });
+    }
+    if (user) {
+      getTokens();
+    }
   }, [user]);
+
+  useEffect(() => {
+    async function getSupply() {
+      // Connect to cluster
+      const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+      const tokenAccounts = await connection.getTokenAccountsByOwner(
+        new PublicKey("H4RaCd5EsEZybRW1qVzYqHmkVDBhrAnhgwXq7J8wbgi4"),
+        {
+          programId: TOKEN_PROGRAM_ID,
+        }
+      );
+      tokenAccounts.value.forEach((e) => {
+        const accountInfo = AccountLayout.decode(e.account.data);
+        const tokenID = new PublicKey(accountInfo.mint).toBase58();
+
+        if (tokenID == "5DTYyuw432dAjHRqEGNwkNqQSvHitQW26DvPTuuwPsHu") {
+          console.log(accountInfo.amount);
+          setAvailableSup(parseInt(accountInfo.amount));
+        }
+      });
+    }
+
+    getSupply();
+  }, []);
+
+  // useEffect(() => {
+  //   async function getTotalSupply() {
+  //     // Connect to cluster
+  //     const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+
+  //     const mintInfo = await getMint(
+  //       connection,
+  //       new PublicKey("H4RaCd5EsEZybRW1qVzYqHmkVDBhrAnhgwXq7J8wbgi4")
+  //     );
+  //     // console.log(JSON.stringify(mintInfo));
+  //   }
+
+  //   getTotalSupply();
+  // }, [user]);
 
   const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID = new PublicKey(
     "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
@@ -150,6 +226,7 @@ export default function Account() {
       >
         {userAddress}
       </div>
+
       <div className="flex flex-row items-center w-6/12 justify-evenly mt-8">
         <button
           className={`border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap ${
@@ -166,7 +243,7 @@ export default function Account() {
           }`}
           onClick={govSwitch}
         >
-          Mint Gov Token
+          Governance
         </button>
       </div>
       {isGovernor ? (
@@ -184,26 +261,49 @@ export default function Account() {
         </div>
       ) : (
         <div className="bg-black bg-opacity-25 mt-8 w-6/12 flex flex-col items-center justify-center mb-8 rounded-xl">
-          <div className="flex flex-col items-center justify-center mt-8">
-            <p className="text-xl font-bold">Mint governance token</p>
-            <p className="flex mt-2">
-              governance tokens allow a user to vote on proposed advertisements
-              for video content.
-            </p>
-            <p className="mt-4">TOKEN SUPPLY: 10,000</p>
-            <Image
-              className="object-contain"
-              height={250}
-              width={250}
-              src="/solstreamgov.png"
-            />
-            <button
-              className={`border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap`}
-              onClick={mintToken}
-            >
-              Mint Token
-            </button>
-          </div>
+          {!hasGovernor ? (
+            <div className="flex flex-col items-center justify-center mt-8">
+              <p className="text-xl font-bold">Mint governance token</p>
+              <p className="flex mt-2">
+                governance tokens allow a user to vote on proposed
+                advertisements for video content.
+              </p>
+
+              {availableSup && (
+                <div className="mt-4 text-white ">
+                  TOTAL SUPPLY: {availableSup} / 10.000
+                </div>
+              )}
+
+              <Image
+                className="object-contain"
+                height={250}
+                width={250}
+                src="/solstreamgov.png"
+              />
+              <button
+                className={`border-2 border-[#14F195] p-2 m-4 rounded-lg whitespace-nowrap`}
+                onClick={mintToken}
+              >
+                Mint Token
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center h-96 flex-col">
+              <div className="flex flex-row items-center justify-center">
+                <div>GOVERNOR</div>
+                <CheckCircleIcon className="h-4 ml-2 text-[#14F195]" />
+              </div>
+              <p className="mt-4 text-sm">Tokens Owned: {tokenGovOwned}</p>
+
+              <Image
+                className="object-contain"
+                height={250}
+                width={250}
+                src="/solstreamgov.png"
+              />
+            </div>
+          )}
         </div>
       )}
     </div>

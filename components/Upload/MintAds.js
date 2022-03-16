@@ -2,6 +2,30 @@ import { useMoralis } from "react-moralis";
 import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+import solstream from "../../utils/solstream";
+import { Provider, Program } from "@project-serum/anchor";
+import {
+  clusterApiUrl,
+  Connection,
+  Keypair,
+  SystemProgram,
+  Transaction,
+  PublicKey,
+} from "@solana/web3.js";
+
+import { Token, TOKEN_PROGRAM_ID, AccountLayout } from "@solana/spl-token";
+import {
+  getAccount,
+  createMint,
+  getMint,
+  createAccount,
+  mintTo,
+  getOrCreateAssociatedTokenAccount,
+  getAssociatedTokenAddress,
+  transfer,
+} from "@solana/spl-token";
+
+const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
 export default function MintVideos() {
   const { Moralis } = useMoralis();
@@ -59,11 +83,15 @@ export default function MintVideos() {
     adContent.set("adDescription", adDescription);
     adContent.set("link", adLink);
     adContent.set("category", category);
-    adContent.save().then((object) => {
-      // contractCall(object);
+    adContent.save().then(() => {
+      contractCall();
       setIsUploading(false);
       alert("saved");
     });
+  }
+
+  async function contractCall() {
+    solstream;
   }
 
   return (

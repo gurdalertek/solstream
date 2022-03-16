@@ -60,32 +60,30 @@ export default function Uploads() {
     <div className="mt-8 flex flex-col items-center justify-center">
       <h1 className="flex text-xl font-bold mb-4">COLLECTION</h1>
       <div className="mt-8 flex flex-row">
-        <button
+        <div
           className={`border-2 border-[#14F195] flex flex-row items-center p-2 m-4 rounded-lg whitespace-nowrap`}
           onClick={govSwitch}
         >
-          {!isGovernor ? "Ad Proposals" : "Video Content"}
-          <SwitchHorizontalIcon className="h-3 ml-2" />
-        </button>
+          {/* {!isGovernor ? "Ad Proposals" : "Video Content"} */}
+          Your Ads
+          {/* <SwitchHorizontalIcon className="h-3 ml-2" /> */}
+        </div>
       </div>
-      {isGovernor ? (
-        <div className="bg-black bg-opacity-25 mt-8 sm:w-6/12 w-full flex flex-col items-center justify-center mb-8 rounded-xl">
-          <div className="flex w-full flex-col items-center justify-center my-8">
-            <p className="text-xl mb-8 font-bold">
-              Your advertisement proposals
-            </p>
-            {/* {votes.map((vote, index) => {
+      {/* {isGovernor ? ( */}
+      <div className="bg-black bg-opacity-25 mt-8 sm:w-6/12 w-full flex flex-col items-center justify-center mb-8 rounded-xl">
+        <div className="flex w-full flex-col items-center justify-center my-8">
+          <p className="text-xl mb-8 font-bold">Your advertisement proposals</p>
+          {/* {votes.map((vote, index) => {
               return <VotesContainer key={index} />;
             })} */}
-            <VotesContainer />
-            <VotesContainer />
-            <VotesContainer />
-          </div>
+          <VotesContainer />
+          <VotesContainer />
+          <VotesContainer />
         </div>
-      ) : (
-        // <Results />
-        <VideoUploads />
-      )}
+      </div>
+      {/* // ) : ( // // <Results />
+      // <VideoUploads />
+      // )} */}
     </div>
   );
 }
