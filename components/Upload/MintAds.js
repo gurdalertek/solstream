@@ -2,8 +2,12 @@ import { useMoralis } from "react-moralis";
 import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
-import solstream from "../../utils/solstream";
+// import solstream from "../../utils/solstream";
+import idl from "../../utils/solstream.json";
 import { Provider, Program } from "@project-serum/anchor";
+import * as anchor from "@project-serum/anchor";
+// import program from "./Program";
+
 import {
   clusterApiUrl,
   Connection,
@@ -28,7 +32,7 @@ import {
 const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
 export default function MintVideos() {
-  const { Moralis } = useMoralis();
+  const { Moralis, user } = useMoralis();
 
   const [selected, setSelected] = useState();
   const [categories, setCategories] = useState([]);
@@ -83,15 +87,54 @@ export default function MintVideos() {
     adContent.set("adDescription", adDescription);
     adContent.set("link", adLink);
     adContent.set("category", category);
-    adContent.save().then(() => {
-      contractCall();
+    adContent.save().then((object) => {
+      contractCall(object);
       setIsUploading(false);
       alert("saved");
     });
   }
 
-  async function contractCall() {
-    solstream;
+  const date = new Date();
+  let time = date.getTime() + 432000;
+
+  async function contractCall(object) {
+    anchor.setProvider(await window.solana.connect());
+    const ad = anchor.web3.Keypair.generate();
+
+    // Address of the deployed program.
+    const programId = new anchor.web3.PublicKey(idl.metadata.address);
+
+    // Generate the program client from IDL.
+    const program = new anchor.Program(idl, programId);
+
+    // Execute the RPC.
+
+    // await program.rpc.initialize();
+
+    await program.rpc.createAd(
+      object.get("adTitle"),
+      object.get("adDescription"),
+      object.id,
+
+      new anchor.BN(time),
+      {
+        accounts: {
+          ad: ad.publicKey,
+          author: new PublicKey(user.get("solAddress")),
+          systemProgram: anchor.web3.SystemProgram.programId,
+
+          // Accounts here...
+        },
+        signers: [
+          ad,
+          // Key pairs of signers here...
+        ],
+      }
+    );
+    object.set("pubKey", ad.publicKey.toBase58());
+    object.set("active", true);
+    object.save();
+    console.log(ad.PublicKey.toBase58());
   }
 
   return (
