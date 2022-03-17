@@ -14,16 +14,6 @@ This documentation presents details on the SOLSTREAM dapp and project.
 
 ![Solana Cover Slide](./img/Slide01.png) 
 
-## Screenshots from SOLSTREAM
-
-Home Page:
-![Home Screen](./img/Screen01.png) 
-
-Advertisement being displayed while "Paris" video is running:
-![Home Screen](./img/Screen04.png) 
-
-Uploading/Posting of Advertisements 
-![Home Screen](./img/Screen22.png)
 
 ## Project Team
 
