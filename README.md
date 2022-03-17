@@ -10,7 +10,7 @@ This documentation presents details on the SOLSTREAM dapp and project.
 - [**Documentation**](./doc/Documentation.md) describes the project and the dapp.
 - [**YouTube Video**](https://youtu.be/SnNyCBWyJAc) is the demo video for the hackathon.
 
-## CONTENT FOR DEVELOPERS
+## For Developers
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
