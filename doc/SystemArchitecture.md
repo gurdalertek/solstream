@@ -12,28 +12,21 @@ It should be noted that this is the design, yet not all of this design has been 
 
 ![Agents/Actors/Stakeholders](./img/Slide03.png) 
 
-**Viewers**
-Watch for free free streaming TV channels (with advertisement).
+**Viewers** watch for free free streaming TV channels (with advertisement).
 
-**Creators**
-Submit/get paid for copyrighted content as NFT.
+**Creators** submit/get paid for copyrighted content as NFT.
 
-**Advertisers**
-Can purchase advertisement rights to their advertisement videos/messages as NFT (type of advertisement, number of times aired, date interval, times of day)
+**Advertisers** can purchase advertisement rights to their advertisement videos/messages as NFT (type of advertisement, number of times aired, date interval, times of day)
 
-**Governors**
-Receive royalties/use voting rights by serving on approval committees.
+**Governors** receive royalties/use voting rights by serving on approval committees.
 
-**Project Team (Future plan)**
-Receive royalties/gain voting rights for developing the project into the future.
+**Project Team (Future plan)** receive royalties/gain voting rights for developing the project into the future.
 
-**Subscribers (Future plan)**
-Watch for free free streaming TV channels without advertisement.
+**Subscribers (Future plan)** watch for free free streaming TV channels without advertisement.
 
-**Investors (Future plan)**
-Purchase and get royalties/voting rights for Channel/Network Shares as NFT.
+**Investors (Future plan)** purchase and get royalties/voting rights for Channel/Network Shares as NFT.
 
-**System**
+**System** coordinates all the events, contracts, advertisements, DAO, and other components.
 
 ###  Use Cases and Flows for Agents/Actors/Stakeholders
 
@@ -81,12 +74,15 @@ Pay with Solana (SOL) to collect the accumulated rewards, which is to be recorde
 		
 
 **Project Team (Future plan)**
+
 As described in the UML use case diagram above, buidl and maintain the system.
 
 **Subscribers (Future plan)**
+
 Same as viewers, except that they do not see the advertisements. There can also be other benefits of being a subscriber.
 
 **Investors (Future plan)**
+
 Purchase and get royalties/voting rights for Channel/Network Shares as NFT.
 
 **System**
