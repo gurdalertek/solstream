@@ -1,0 +1,35 @@
+![Logo](./img/logo.png) 
+
+## Future Plans for SOLSTREAM
+
+1. Our main **vision** for SOLSTREAM is to grow it into the **"YouTube" of Web 3**, resolving many of the problems with YouTube and other streaming services. Rather than being a "payment with crypto" differentiation, we see the main differentiation and value of the system in its decentralized nature, which can enable democratization and better monetization. We envision a **Web 3.0 community**, operating as a Decentralized Autonomous Organization (DAO) where new models of curation are implemented. 
+2. Users can be allowed to **download source files** (such as video templates) used in creating the videos,  possibly at a minor additional charge, and do many other things that do not exist in Web 2.0 streaming platforms, opening the door for revenue and **advanced videonomics** (economics of video).
+3. A full-fledged **datanomics** model can be created, that will enable **monetization from the SOLSTREAM dapp**. Basic idea of displaying paid ads is already part of the design (even though not yet implemented). Much more could be possible. Possibilities include selling source files, intermediate computed data (ex: source data for advanced video analytics), video editing and rendering services, and even establishing ways in which communities can make money together. The subscription-based model of YouTube can also be adopted, where advertiserts, subscribers, and other stakeholders pay upfront monthly or annual fees, which can bring them big savings. For example, governors may be allowed to stake their earned SOL or native SOLSTREAM token, to earn passive income. If a token is to be issued for SOLSTREAM, a full-fledged [tokenomics design](https://maxyampolsky.medium.com/how-to-design-tokenomics-for-your-cryptocurrency-the-basics-of-creating-your-token-9a0375cb9479) is needed, which mitigates against different types of technical, legal, economic, and social risks, and ensures economics value and growth. For example, in both videonomics and tokenomics design, it is important to make sure not to distribute tokens to users randomly, as this may be [labeled as lottery and sued by some users](https://cryptobriefing.com/a-guy-put-10-ethereum-defi-app/).
+4. Users can be allowed to **customize interface style** by selecting [color palettes](https://www.crazyegg.com/blog/website-color-palettes/) for the user interface. These palettes can include pallets that are suitable for [color blindness](https://www.color-blindness.com/), similar to [R packages for color blindness](https://www.datanovia.com/en/blog/top-r-color-palettes-to-know-for-great-data-visualization/). Another possibility is to use [color palettes inspired by photos of nature](https://sarahrenaeclark.com/color-palettes/).
+5. Several **other media types** can be added to the analysis reports. One opportunity is low-bandwidth Javascript channels, that can potentially run even on IoT networks, such as the decentralized [Helium Network](https://www.helium.com/). For example, the bandwidth requirement for the proverbs videos under the Culture channel would be _significantly_ lower if the streamed content was just proverb text algorithmically visualized. Another idea for an algorithmically generated stream would be dynamic crypto marketcaps and prices visualized using treemaps and other -preferably interactive- information visualization methods. Another opportunity is streaming events in MetaVerse, such as [Sandbox](https://www.sandbox.game/en/) and [Decentraland](https://decentraland.org/) where SOLSTREAM would be the entrance gate to the MetaVerse of choice.
+6. **Data analytics methods** and [machine learning (ML)](https://www.coursera.org/collections/machine-learning) algorithms, including **collaborative filtering, association mining, deep learning, unsupervised learning** and even **prescriptive analytics**, can be implemented within the dapp into the future, using some of the [top data science software libraries](https://towardsdatascience.com/8-booming-data-science-libraries-you-must-watch-out-in-2022-cec2dbb42437), to make optimized recommendations to users, based on their online behavior, such as watched videos and clicks.
+7. With the permission of the user, meta-data about the analyzed data and analysis results, as well as metrics in the generated video analytics reports, can be **published on** [ChainLink](https://chain.link) and other **oracles as feeds**.  
+8. Transactions, including newly uploaded content, and other **feeds can be published as webhooks** [as described here](https://www.youtube.com/watch?v=41NOoEz3Tzc), **allowing RPA tools** such as [Zapier](https://zapier.com/), [CaptainData](https://app.captaindata.co), [Konnectzit](https://app.konnectzit.com) and [Hexomatic](https://hexomatic.com) **to connect to these hooks** and perform many interesting actions, including **automated notification/signal/alert push messages to social media**.
+9. For the user interface (UI), instead of or in addition to the [Hulu UI](https://www.youtube.com/watch?v=MqDlsjc8GLo) that was adopted, other alternative interfaces can be adopted and/or developed, such as the [Playstation UI](https://www.youtube.com/results?search_query=playstation+clone+with+react). Users can be charged a small fee to be able to user their favorite interface.
+10. Risks associated with all the components of the system should be identied and analyzed thoroughly. For example, one risk with DAOs is [hostile takeovers](https://www.theblockcrypto.com/post/134180/build-finance-dao-suffers-hostile-governance-takeover-loses-470000). Both [business](https://www.google.com/search?channel=trow5&client=firefox-b-d&q=risks+for+blockchain+projects) and [academic literature](https://scholar.google.ae/scholar?as_ylo=2018&q=risk+mitigation+in+blockchain+projects&hl=en&as_sdt=0,5&as_vis=1) can provide useful insights for [risk mitigation](https://www.simplilearn.com/what-is-risk-mitigation-article).
+11. On the documentation side, the developed code, especially the Javascript **code can be visually documented** using [SmartDraw's Automated Class Diagrams Extensions](htpps://www.smartdraw.com/developers/extensions/class-diagram.htm)
+12. On the documentation side, the documentation can be put into a **better format** using [GitBook](https://gitbook.com), just like the [GitBook documentation of TraderJoe](https://docs.traderjoexyz.com/main/welcome/master).
+13. Many **other opportunities** for improvement have been identified and listed through brain storming sessions and are available as internal notes.
+
+
+**Index**
+
+1. [Background](Background.md)
+2. [Unique Value Offerings](UniqueValueOfferings.md)
+3. [Design Principles](DesignPrinciples.md)
+4. [System Architecture](SystemArchitecture.md)
+5. [Backend](Backend.md)
+6. [Frontend](Frontend.md)
+7. [Technology/Tool Stack](TechnologyStack.md)
+8. [Related Projects](RelatedProjects.md)
+9. [Other Resources](OtherResources.md)
+10. **Future Plans**
+
+<hline></hline>
+
+[Back to Main GitHub Page](../README.md) | [Back to Documentation Index Page](Documentation.md)
