@@ -1,3 +1,5 @@
+![Logo](./doc/img/logo.png) 
+
 ## A Decentralized Video Streaming Service in the Solana Ecosystem
 
 [SOLSTREAM](https://solstream.co) is a **Decentralized Video Streaming** Service in the **Solana** Ecosystem.
@@ -9,6 +11,28 @@ This documentation presents details on the SOLSTREAM dapp and project.
 - [**SOLSTREAM Dapp**](https://solstream.co) is running live on the cloud.
 - [**Documentation**](./doc/Documentation.md) describes the project and the dapp.
 - [**YouTube Video**](https://youtu.be/SnNyCBWyJAc) is the demo video for the hackathon.
+
+## SOLSTREAM Team
+
+- [Felix Prabitz](https://github.com/felixpx/) (Frontend development, Smart contracts, UI design)
+
+_New York, NY, USA_
+
+- [Dominic Hackett](https://github.com/dominichackett)  (Backend development, Smart contracts, System design)
+
+_Trinidad and Tobago_
+
+- [Harsh Ghodkar](https://github.com/Saviour1001) (Backend development, Smart contracts)
+
+_Mumbai, India_
+
+- [Gurdal Ertek](https://github.com/gurdalertek) (System design, UI design, Content Development, System documentation)
+
+_Al Ain, United Arab Emirates_
+
+<!--- Member of [BlockBlockData](https://blockblockdata.com) Team; Associate Professor of Business Analytics, [UAE University](https://cbe.uaeu.ac.ae/en/departments/analytics/) --->
+
+![Logo](./doc/img/Slide10.png) 
 
 ## For Developers
 
