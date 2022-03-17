@@ -2,13 +2,13 @@
 
 ## Other Resources
 
-[BrandWatch](https://www.brandwatch.com/)
+- [BrandWatch](https://www.brandwatch.com/)
 Insights into the media industry
 
-[How The Television Will Be Revolutionized](https://www.accelerating.org/articles/televisionwillberevolutionized)
+- [How The Television Will Be Revolutionized](https://www.accelerating.org/articles/televisionwillberevolutionized)
 An early article from 2010 on how the television will be revolutionized.
 
-[My first impressions of web3](https://moxie.org/2022/01/07/web3-first-impressions.html)
+- [My first impressions of web3](https://moxie.org/2022/01/07/web3-first-impressions.html)
 A critical look at "Web 3.0", by [Moxie Marlinspike](https://twitter.com/moxie), Founder of [Signal app](https://signal.org/en/). The article includes discussions of media on Web 3.0, as well.
 
 
