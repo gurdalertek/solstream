@@ -1,17 +1,51 @@
 ![Logo](./img/logo.png) 
 
-## Automate your ML, get your results as NFT
+## A Decentralized Video Streaming Service in the Solana Ecosystem
 
-[AutoML.NFT app](https://github.com/albert-vo-crypto/automlnft) is **a Machine Learning as a Service (MLaaS) platform** to interactively and dynamically **generate Machine Learning (ML) report** for uploaded data files, and **issue NFT tokens** on the [XRP Ledger](https://xrpl.org/index.html) as certificate of ownership. AutoMLNFT also provides an analytical marketplace, where legal ownership of ML reports can be bought.
+[SOLSTREAM](https://solstream.co) is a **Decentralized Video Streaming** Service in the **Solana** Ecosystem.
 
-This documentation presents details on the AutoML.NFT dapp and project.
+This documentation presents details on the SOLSTREAM dapp and project.
 
 ## Start Here:
 
-- [**AutoML.NFT Dapp**](https://lucid-mayer-4a70a5.netlify.app/) is running live on the cloud.
-- [**Sample "restaurant" dataset**](https://www.dropbox.com/s/5q61bqr136m52sf/dataset.xlsx?dl=0) can be used to test the dapp. Under Role, role for "RestaurantID" should be "Id" and role for "Satisfaction" should be "Target".
-- [**Documentation**](./doc/Documentation.md) describes the project and the dapp.
-- [**YouTube Video**](https://youtu.be/CwoCla53aFI) is the demo video for the hackathon.
+- [**SOLSTREAM Dapp**](https://solstream.co) is running live on the cloud.
+- [**Source Code**](../README.md) is the GitHub repository for the dapp.
+- [**YouTube Video**](https://youtu.be/SnNyCBWyJAc) is the demo video for the hackathon.
+
+![Solana Cover Slide](./img/Slide01.png) 
+
+## Screenshots from SOLSTREAM
+
+Home Page:
+![Home Screen](./img/Screen01.png) 
+
+Advertisement being displayed while "Paris" video is running:
+![Home Screen](./img/Screen04.png) 
+
+Uploading/Posting of Advertisements 
+![Home Screen](./img/Screen22.png)
+
+## Project Team
+
+- [Felix Prabitz](https://github.com/felixpx/) (Frontend development, Smart contracts, UI design)
+
+_New York, NY, USA_
+
+- [Dominic Hackett](https://github.com/dominichackett)  (Backend development, Smart contracts, System design)
+
+_Trinidad and Tobago_
+
+- [Harsh Ghodkar](https://github.com/Saviour1001) (Backend development, Smart contracts)
+
+_Mumbai, India_
+
+- [Gurdal Ertek](https://github.com/gurdalertek) (System design, UI design, Content Development, System documentation)
+
+_Al Ain, United Arab Emirates_
+
+<!--- Member of [BlockBlockData](https://blockblockdata.com) Team; Associate Professor of Business Analytics, [UAE University](https://cbe.uaeu.ac.ae/en/departments/analytics/) --->
+
+![Team](./img/Slide10.png) 
 
 ## Index
 
