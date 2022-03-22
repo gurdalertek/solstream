@@ -10,7 +10,7 @@ This documentation presents details on the SOLSTREAM dapp and project.
 
 - [**SOLSTREAM Dapp**](https://solstream.co) is running live on the cloud.
 - [**Documentation**](./doc/Documentation.md) describes the project and the dapp.
-- [**YouTube Video**](https://youtu.be/SnNyCBWyJAc) is the demo video for the hackathon.
+- [**YouTube Video**](https://youtu.be/SnNyCBWyJAc) is the demo video for the [MagicEden API Hackathon](https://magic-eden-api-hackathon.devpost.com/) hackathon.
 
 ## SOLSTREAM Team
 
